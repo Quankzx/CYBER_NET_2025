@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Cyber';
+    src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+  }
+
+  :root {
+    --color-cyber-black: #0a0a0f;
+    --color-cyber-darker: #16161d;
+    --color-cyber-dark: #1a1a23;
+    --color-cyber-primary: #2b2b3d;
+    --color-cyber-light: #3f3f5c;
+  }
+
+  :root.light {
+    --color-cyber-black: #f0f0f5;
+    --color-cyber-darker: #e6e6ed;
+    --color-cyber-dark: #dcdce3;
+    --color-cyber-primary: #d2d2dc;
+    --color-cyber-light: #c8c8d5;
+  }
+
+  body {
+    @apply bg-cyber-black text-gray-300 font-['Orbitron'] transition-colors duration-300;
+    background-image: 
+      linear-gradient(to bottom, transparent 0%, rgba(0, 255, 255, 0.05) 100%),
+      radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 100%);
+    background-attachment: fixed;
+  }
+
+  /* Dark mode specific styles */
+  .dark body {
+    @apply bg-cyber-black text-gray-300;
+  }
+
+  /* Light mode specific styles */
+  :root.light body {
+    @apply bg-white text-gray-800;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cyber-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neon-blue/30 rounded-full hover:bg-neon-blue/50 transition-colors;
+  }
+}
+
+@layer components {
+  .cyber-button {
+    @apply relative px-6 py-2 bg-cyber-primary text-neon-blue border border-neon-blue
+           hover:shadow-neon-blue transition-all duration-300
+           before:content-[''] before:absolute before:inset-0
+           before:border-t before:border-neon-blue before:scale-x-0
+           hover:before:scale-x-100 before:transition-transform
+           before:duration-300 flex items-center;
+  }
+
+  .cyber-input {
+    @apply bg-cyber-dark border-neon-blue text-neon-blue placeholder-cyber-light/50
+           focus:ring-1 focus:ring-neon-blue focus:border-neon-blue
+           rounded-lg transition-all duration-300;
+  }
+
+  .cyber-card {
+    @apply bg-cyber-dark/80 backdrop-blur-sm border border-neon-blue/20 
+           hover:border-neon-blue/40 transition-all duration-300 rounded-lg
+           shadow-lg hover:shadow-neon-blue/20;
+  }
+
+  .cyber-heading {
+    @apply text-neon-blue font-bold tracking-wider;
+  }
+
+  .cyber-text-glow {
+    @apply text-neon-blue drop-shadow-[0_0_8px_rgba(0,255,255,0.5)];
+  }
+
+  .cyber-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink;
+  }
+
+  /* Dark mode specific component styles */
+  .dark .cyber-card {
+    @apply bg-cyber-dark/80;
+  }
+
+  /* Light mode specific component styles */
+  :root.light .cyber-card {
+    @apply bg-white/90 border-gray-200;
+  }
+
+  :root.light .cyber-button {
+    @apply bg-gray-100 text-gray-800 border-gray-300;
+  }
+
+  :root.light .cyber-input {
+    @apply bg-white border-gray-300 text-gray-800;
+  }
+
+  :root.light .cyber-heading {
+    @apply text-gray-800;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .cyber-button {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .cyber-heading {
+    @apply text-xl;
+  }
+
+  .cyber-card {
+    @apply p-4;
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-cyber-darker border-t border-neon-blue/20
+           flex justify-around items-center py-2 px-4 z-50;
+  }
+
+  .mobile-nav-item {
+    @apply flex flex-col items-center text-xs text-gray-400;
+  }
+
+  .mobile-nav-item.active {
+    @apply text-neon-blue;
+  }
+
+  /* Mobile Content Adjustments */
+  .content-grid {
+    @apply grid-cols-1 gap-4;
+  }
+
+  .mobile-stack {
+    @apply flex-col;
+  }
+
+  .mobile-full-width {
+    @apply w-full;
+  }
+
+  .mobile-text-center {
+    @apply text-center;
+  }
+
+  .mobile-hidden {
+    @apply hidden;
+  }
+
+  .mobile-show {
+    @apply block;
+  }
+
+  /* Mobile Form Adjustments */
+  .form-container {
+    @apply px-4;
+  }
+
+  .input-group {
+    @apply flex-col space-y-2;
+  }
+
+  /* Mobile Card Adjustments */
+  .card-grid {
+    @apply grid-cols-1;
+  }
+
+  .card-content {
+    @apply flex-col;
+  }
+
+  /* Mobile Typography */
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+
+  /* Mobile Spacing */
+  .section-spacing {
+    @apply py-4 px-4;
+  }
+
+  .content-spacing {
+    @apply space-y-4;
+  }
+}
+
+/* Tablet Responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tablet-grid {
+    @apply grid-cols-2;
+  }
+
+  .tablet-flex {
+    @apply flex-row;
+  }
+
+  .tablet-text-left {
+    @apply text-left;
+  }
+
+  /* Tablet Typography */
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  /* Tablet Spacing */
+  .section-spacing {
+    @apply py-6 px-6;
+  }
+
+  .content-spacing {
+    @apply space-y-6;
+  }
+}
+
+/* Desktop and larger screens */
+@media (min-width: 1025px) {
+  .desktop-grid {
+    @apply grid-cols-3;
+  }
+
+  .desktop-flex {
+    @apply flex-row;
+  }
+
+  .desktop-text-left {
+    @apply text-left;
+  }
+
+  /* Desktop Typography */
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  /* Desktop Spacing */
+  .section-spacing {
+    @apply py-8 px-8;
+  }
+
+  .content-spacing {
+    @apply space-y-8;
+  }
+}
+
+/* Theme transition effects */
+.theme-transition {
+  @apply transition-all duration-300;
+}
