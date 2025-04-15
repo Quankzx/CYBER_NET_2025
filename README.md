@@ -135,4 +135,4 @@ VITE_APP_NAME=MyApp
 
 ## 📄 License
 
-MIT © [Your Name](https://github.com/your-username)
+MIT © [Quankz](https://github.com/Quankzx)
